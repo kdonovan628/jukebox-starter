@@ -1,11 +1,7 @@
 const prisma = require('./index');
 const { faker } = require('@faker-js/faker');
 
-const numUsers = 5;
-const numTracks = 20;
-const numPlaylists = 10;
-
-const seed = async () => {
+const seed = async (numUsers = 5, numPlaylists = 10, numTracks = 20) => {
   const users = Array.from({ length: numUsers }, () => ({
     username: faker.internet.username(),
   }));
