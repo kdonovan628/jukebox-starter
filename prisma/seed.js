@@ -1,6 +1,5 @@
-const { PrismaClient } = require('@prisma/client');
+const prisma = require('./index');
 const { faker } = require('@faker-js/faker');
-const prisma = new PrismaClient();
 
 const numUsers = 5;
 const numTracks = 20;
@@ -20,7 +19,7 @@ const seed = async () => {
   await prisma.track.createMany({ data: tracks });
 
   for (let i = 0; i < numPlaylists; i++) {
-    const trackCount = 1 + Math.floor(Math.random() * 5); 
+    const trackCount = 1 + Math.floor(Math.random() * 5);
     const selectedTracks = Array.from({ length: trackCount }, () => ({
       id: 1 + Math.floor(Math.random() * numTracks),
     }));
